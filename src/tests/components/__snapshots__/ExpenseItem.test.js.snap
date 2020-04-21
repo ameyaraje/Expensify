@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render individual expense object 1`] = `
+<div>
+  <p>
+    Name:
+    <Link
+      to="/edit/123"
+    >
+      bill 1
+    </Link>
+  </p>
+  <p>
+    Amount: 
+    10
+  </p>
+  <p>
+    CreatedAt: 
+    -345600000
+  </p>
+</div>
+`;

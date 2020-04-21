@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ExpenseList with expenses 1`] = `
+<div>
+  <h2>
+    Here are all the expenses
+  </h2>
+  <ExpenseItem
+    item={
+      Object {
+        "amount": 10,
+        "createdAt": -345600000,
+        "description": "bill 1",
+        "id": "123",
+        "note": "no note",
+      }
+    }
+    key="123"
+  />
+  <ExpenseItem
+    item={
+      Object {
+        "amount": 20,
+        "createdAt": 0,
+        "description": "bill 2",
+        "id": "1234",
+        "note": "",
+      }
+    }
+    key="1234"
+  />
+  <ExpenseItem
+    item={
+      Object {
+        "amount": 30,
+        "createdAt": 172800000,
+        "description": "bill 3",
+        "id": "987",
+        "note": "blah blah",
+      }
+    }
+    key="987"
+  />
+  <ExpenseItem
+    item={
+      Object {
+        "amount": 40,
+        "createdAt": 691200000,
+        "description": "kuchbhi",
+        "id": "367",
+        "note": "note note note",
+      }
+    }
+    key="367"
+  />
+</div>
+`;
+
+exports[`should render ExpenseList with expenses 2`] = `
+<div>
+  <h2>
+    Here are all the expenses
+  </h2>
+  <h4>
+    No Expenses to Show
+  </h4>
+</div>
+`;
