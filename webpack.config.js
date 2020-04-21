@@ -12,7 +12,7 @@ module.exports = (env) => {
         output: {
             // path: '/Users/ameyaraje/Desktop/ReactJS/React-Experiments/indecision-app/public',
             // usage of 'path' makes more sense so the project is portable
-            path: path.join(__dirname, 'public'),
+            path: path.join(__dirname, 'public', 'dist'),
             filename: 'bundle.js'
         },
         module: {
@@ -45,7 +45,8 @@ module.exports = (env) => {
         devtool: isProd ? 'source-map': 'inline-source-map',
         devServer: {
             contentBase: path.join(__dirname, 'public'),
-            historyApiFallback: true
+            historyApiFallback: true,
+            publicPath: '/dist'
         }
     };
 };
