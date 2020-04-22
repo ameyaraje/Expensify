@@ -12,11 +12,11 @@ exports[`should render individual expense object 1`] = `
   </p>
   <p>
     Amount: 
-    10
+    $10.00
   </p>
   <p>
     CreatedAt: 
-    -345600000
+    December-27-1969
   </p>
 </div>
 `;
