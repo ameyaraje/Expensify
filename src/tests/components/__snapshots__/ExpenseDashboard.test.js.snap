@@ -5,6 +5,7 @@ exports[`should render ExpenseDashboardPage 1`] = `
   <h1>
     Expense Component
   </h1>
+  <Connect(ExpenseSummary) />
   <Connect(ExpenseListFilters) />
   <Connect(ExpenseList) />
 </div>

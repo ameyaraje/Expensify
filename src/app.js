@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import moment from 'moment';
 
 import AppRouter from './routers/AppRouter';
 
@@ -21,7 +22,7 @@ store.dispatch(addExpense({
     description: 'Phone Bill',
     note: 'for June 2019',
     amount: 25500,
-    createdAt: 10000
+    createdAt: moment(1000).valueOf()
 }));
 
 store.dispatch(addExpense({
@@ -48,10 +49,6 @@ store.dispatch(addExpense({
 console.log(store.getState());
 
 // store.dispatch(setTextFilter('nan'));
-
-const state = store.getState();
-const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-console.log(visibleExpenses);
 
 const layout = (
     <Provider store={store}>
