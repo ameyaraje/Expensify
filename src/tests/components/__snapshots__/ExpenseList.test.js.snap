@@ -46,7 +46,7 @@ exports[`should render ExpenseList with expenses 1`] = `
       Object {
         "amount": 40,
         "createdAt": 691200000,
-        "description": "kuchbhi",
+        "description": "rent",
         "id": "367",
         "note": "note note note",
       }
