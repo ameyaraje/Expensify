@@ -23,7 +23,7 @@ export default [{
 },
 {
     id: '367',
-    description: 'kuchbhi',
+    description: 'rent',
     note: 'note note note',
     amount: 40,
     createdAt: moment(0).add(8, 'days').valueOf()

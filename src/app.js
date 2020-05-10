@@ -7,7 +7,7 @@ import AppRouter from './routers/AppRouter';
 
 import configureStore from './store/configureStore';
 
-import { addExpense, removeExpense, editExpense } from './actions/expenses';
+import { addExpense, startSetExpenses } from './actions/expenses';
 import './firebase/firebase';
 
 import 'normalize.css/normalize.css';
@@ -17,37 +17,19 @@ import 'react-dates/lib/css/_datepicker.css'
 
 const store = configureStore();
 
-store.dispatch(addExpense({
-    description: 'Phone Bill',
-    note: 'for June 2019',
-    amount: 25500,
-    createdAt: moment(1000).valueOf()
-}));
+// store.dispatch(addExpense({
+//     description: 'Phone Bill',
+//     note: 'for June 2019',
+//     amount: 25500,
+//     createdAt: moment(1000).valueOf()
+// }));
 
-store.dispatch(addExpense({
-    description: 'internet Bill',
-    note: 'for July 2019',
-    amount: 40000,
-    createdAt: -43000
-}));
-
-store.dispatch(addExpense({
-    description: 'Nandos',
-    note: 'dinner with friends',
-    amount: 1400,
-    createdAt: 65000
-}));
-
-store.dispatch(addExpense({
-    description: 'rent',
-    note: 'for july 2019',
-    amount: 109100,
-    createdAt: 600
-}));
-
-console.log(store.getState());
-
-// store.dispatch(setTextFilter('nan'));
+// store.dispatch(addExpense({
+//     description: 'internet Bill',
+//     note: 'for July 2019',
+//     amount: 40000,
+//     createdAt: -43000
+// }));
 
 const layout = (
     <Provider store={store}>
@@ -55,4 +37,8 @@ const layout = (
     </Provider>
 );
 
-ReactDOM.render(layout, document.getElementById('app'));
+ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
+
+store.dispatch(startSetExpenses()).then(() => {
+    ReactDOM.render(layout, document.getElementById('app'));
+});
