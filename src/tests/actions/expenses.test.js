@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 
-import { addExpense, editExpense, removeExpense, startAddExpense, setExpenses, startSetExpenses, startRemoveExpense } from '../../actions/expenses';
+import { addExpense, editExpense, removeExpense, startAddExpense, setExpenses, startSetExpenses, startRemoveExpense, startEditExpense } from '../../actions/expenses';
 import expenses from '../fixtures/expenses';
 import database from '../../firebase/firebase';
 import expensesReducer from '../../reducers/expenses';
@@ -54,6 +54,29 @@ test('should set up edit expense action object', () => {
         updates: {
             note: 'some note'
         }
+    });
+});
+
+test('should edit expenses from firebase', (done) => {
+    const mockStore = createMockStore({});
+    const id = expenses[1].id;
+    const updates = {
+        note: 'note from unit test'
+    };
+
+    mockStore.dispatch(startEditExpense(id, updates))
+    .then(() => {
+        const actions = mockStore.getActions();
+        expect(actions[0]).toEqual({
+            type: 'EDIT_EXPENSE',
+            id: id,
+            updates: updates
+        });
+        return database.ref(`expenses/${id}`).once('value');
+    })
+    .then((snapshot) => {
+        expect(snapshot.val().note).toBe(updates.note);
+        done();
     });
 });
 
