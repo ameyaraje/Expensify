@@ -7,6 +7,8 @@ import database from '../../firebase/firebase';
 import expensesReducer from '../../reducers/expenses';
 
 const createMockStore = configureMockStore([thunk]);
+const uid = 'blahblah0987';
+const defaultAuthState = { auth: { uid } };
 
 beforeEach((done) => {
     const expensesData = {};
@@ -15,7 +17,7 @@ beforeEach((done) => {
         expensesData[id] = { description, note, amount, createdAt };
     }); 
 
-    database.ref('expenses').set(expensesData).then(() => done());
+    database.ref(`users/${uid}/expenses`).set(expensesData).then(() => done());
 });
 
 test('should set up remove expense action object', () => {
@@ -28,7 +30,7 @@ test('should set up remove expense action object', () => {
 });
 
 test('should remove expense from firebase', (done)=> {
-    const mockStore = createMockStore({});
+    const mockStore = createMockStore(defaultAuthState);
     const id = expenses[2].id;
 
     mockStore.dispatch(startRemoveExpense({ id }))
@@ -38,7 +40,7 @@ test('should remove expense from firebase', (done)=> {
             type: 'REMOVE_EXPENSE',
             id: id
         });
-        return database.ref(`expenses/${id}`).once('value');
+        return database.ref(`users/${uid}/expenses/${id}`).once('value');
     }).then((snapshot) => {
         expect(snapshot.val()).toBeFalsy();
         done();
@@ -58,7 +60,7 @@ test('should set up edit expense action object', () => {
 });
 
 test('should edit expenses from firebase', (done) => {
-    const mockStore = createMockStore({});
+    const mockStore = createMockStore(defaultAuthState);
     const id = expenses[1].id;
     const updates = {
         note: 'note from unit test'
@@ -72,7 +74,7 @@ test('should edit expenses from firebase', (done) => {
             id: id,
             updates: updates
         });
-        return database.ref(`expenses/${id}`).once('value');
+        return database.ref(`users/${uid}/expenses/${id}`).once('value');
     })
     .then((snapshot) => {
         expect(snapshot.val().note).toBe(updates.note);
@@ -108,13 +110,7 @@ test('should set up add expense action object using provided values', () => {
 });
 
 test('should add expense to DB and store using defaults', (done) => {
-    const mockStore = createMockStore({});
-    const expenseData = {
-        description: 'test data desc', 
-        note: 'test data note', 
-        amount: 11, 
-        createdAt: 230
-    };
+    const mockStore = createMockStore(defaultAuthState);
 
     mockStore.dispatch(startAddExpense()).then(() => {
         const actions = mockStore.getActions();
@@ -133,7 +129,7 @@ test('should add expense to DB and store using defaults', (done) => {
 });
 
 test('should add expense to DB and store', (done) => {
-    const mockStore = createMockStore({});
+    const mockStore = createMockStore(defaultAuthState);
     const expenseData = {
         description: 'test data desc', 
         note: 'test data note', 
@@ -150,6 +146,10 @@ test('should add expense to DB and store', (done) => {
                 ...expenseData
             }
         });
+        return database.ref(`users/${uid}/expenses/${actions[0].expense.id}`).once('value');
+    })
+    .then((snapshot) => {
+        expect(snapshot.val()).toEqual(expenseData);
         done();
     });
 });
@@ -174,16 +174,15 @@ test('should set expenses', () => {
 
 });
 
-// test('should fetch the expenses from firebase', (done) => {
-//     const mockStore = createMockStore({});
-//     mockStore.dispatch(startSetExpenses())
-//     .then(() => {
-//         const actions = mockStore.getActions();
-//         expect(actions[0]).toEqual({
-//             type: 'SET_EXPENSES',
-//             expenses: expenses
-//         });
-
-//         done();
-//     });
-// });
+test('should fetch the expenses from firebase', (done) => {
+    const mockStore = createMockStore(defaultAuthState);
+    mockStore.dispatch(startSetExpenses())
+    .then(() => {
+        const actions = mockStore.getActions();
+        expect(actions[0]).toEqual({
+            type: 'SET_EXPENSES',
+            expenses: expenses
+        });
+        done();
+    });
+});
