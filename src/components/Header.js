@@ -13,7 +13,7 @@ export const Header = ({ startLogout }) => {
                         <h1>Expensify</h1>
                     </Link>
                     <NavLink to="/help" activeClassName="is-active" exact>Help Page</NavLink>
-                    <button onClick={startLogout}>Log Out</button>
+                    <button className="button button--link" onClick={startLogout}>Log Out</button>
                 </div>
             </div>
         </header>

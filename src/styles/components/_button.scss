@@ -1,8 +1,15 @@
-.login {
+.button {
     background: $light-blue;
     color: white;
     border: none;
     font-size: $font-size-large;
     font-weight: 300;
     padding: $small-size;
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.button--link {
+    background: none;
 }
