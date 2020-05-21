@@ -3,9 +3,11 @@ html {
 }
 
 body {
+    color: $dark-grey;
     font-family: 'Courier New';
     font-size: $medium-size;
     background: white;
+    line-height: 1.6;
 }
 
 button {

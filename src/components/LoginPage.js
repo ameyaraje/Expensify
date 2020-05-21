@@ -5,9 +5,12 @@ import { startLogin } from '../actions/auth';
 
 export const LoginPage = ({ startLogin }) => {
     return (
-        <div>
-            <h2>Log in Page</h2>
-            <button onClick={startLogin}>Log in here</button>
+        <div className="box-layout">
+            <div className="box-layout__box">
+                <h2 className="box-layout__title">Expensify</h2>
+                <p>Start logging all your expenses!</p>
+                <button onClick={startLogin}>Login</button>
+            </div>
         </div>
     );
 };
