@@ -8,17 +8,25 @@ export const ExpenseList = (props) => {
     // console.log('------>', props.expenses[0]);
     
     return (
-        <div>
-            <h2>Here are all the expenses</h2>
-            {
-                props.expenses.length === 0 ? (
-                    <h4>No Expenses to Show</h4>
-                ) : (
-                    props.expenses.map((expense) => {
-                        return (<ExpenseItem key={expense.id} item={expense}/>);
-                    })
-                )
-            }
+        <div className="content-container">
+            <div className="list-header">
+                <div className="show-for-mobile">Expenses</div>
+                <div className="show-for-desktop">Expense</div>
+                <div className="show-for-desktop">Amount</div>
+            </div>
+            <div className="list-body">
+                {
+                    props.expenses.length === 0 ? (
+                        <div className="list-item list-item--message">
+                            <span>No Expenses to Show</span>
+                        </div>
+                    ) : (
+                        props.expenses.map((expense) => {
+                            return (<ExpenseItem key={expense.id} item={expense}/>);
+                        })
+                    )
+                }
+            </div>
         </div>
     );
 };

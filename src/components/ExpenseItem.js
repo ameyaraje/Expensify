@@ -6,22 +6,14 @@ import numeral from 'numeral';
 import { removeExpense } from '../actions/expenses';
 
 const ExpenseItem = (props) => {
-    // console.log(props);
     return (
-        <div>
-            <p>
-                Name: 
-                <Link to={`/edit/${props.item.id}`}>
-                    {props.item.description}
-                </Link>
-            </p>
-            <p>
-                Amount: {numeral(props.item.amount).format('$0,0.00')}
-            </p>
-            <p>
-                CreatedAt: {moment(props.item.createdAt).format('MMMM-DD-YYYY')}
-            </p>
-        </div>
+        <Link className="list-item" to={`/edit/${props.item.id}`}>
+            <div>
+                <h3 className="list-item__title">{props.item.description}</h3>
+                <span className="list-item__subtitle">{moment(props.item.createdAt).format('MMMM-DD-YYYY')}</span>
+            </div>
+            <h3 className="list-item__data">{numeral(props.item.amount).format('$0,0.00')}</h3>
+        </Link>
     );
 };
 
