@@ -1,68 +1,116 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render ExpenseList with expenses 1`] = `
-<div>
-  <h2>
-    Here are all the expenses
-  </h2>
-  <ExpenseItem
-    item={
-      Object {
-        "amount": 10,
-        "createdAt": -345600000,
-        "description": "bill 1",
-        "id": "123",
-        "note": "no note",
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Expenses
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Expense
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <ExpenseItem
+      item={
+        Object {
+          "amount": 10,
+          "createdAt": -345600000,
+          "description": "bill 1",
+          "id": "123",
+          "note": "no note",
+        }
       }
-    }
-    key="123"
-  />
-  <ExpenseItem
-    item={
-      Object {
-        "amount": 20,
-        "createdAt": 0,
-        "description": "bill 2",
-        "id": "1234",
-        "note": "",
+      key="123"
+    />
+    <ExpenseItem
+      item={
+        Object {
+          "amount": 20,
+          "createdAt": 0,
+          "description": "bill 2",
+          "id": "1234",
+          "note": "",
+        }
       }
-    }
-    key="1234"
-  />
-  <ExpenseItem
-    item={
-      Object {
-        "amount": 30,
-        "createdAt": 172800000,
-        "description": "bill 3",
-        "id": "987",
-        "note": "blah blah",
+      key="1234"
+    />
+    <ExpenseItem
+      item={
+        Object {
+          "amount": 30,
+          "createdAt": 172800000,
+          "description": "bill 3",
+          "id": "987",
+          "note": "blah blah",
+        }
       }
-    }
-    key="987"
-  />
-  <ExpenseItem
-    item={
-      Object {
-        "amount": 40,
-        "createdAt": 691200000,
-        "description": "rent",
-        "id": "367",
-        "note": "note note note",
+      key="987"
+    />
+    <ExpenseItem
+      item={
+        Object {
+          "amount": 40,
+          "createdAt": 691200000,
+          "description": "rent",
+          "id": "367",
+          "note": "note note note",
+        }
       }
-    }
-    key="367"
-  />
+      key="367"
+    />
+  </div>
 </div>
 `;
 
 exports[`should render ExpenseList with expenses 2`] = `
-<div>
-  <h2>
-    Here are all the expenses
-  </h2>
-  <h4>
-    No Expenses to Show
-  </h4>
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Expenses
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Expense
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <div
+      className="list-item list-item--message"
+    >
+      <span>
+        No Expenses to Show
+      </span>
+    </div>
+  </div>
 </div>
 `;

@@ -1,22 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render individual expense object 1`] = `
-<div>
-  <p>
-    Name:
-    <Link
-      to="/edit/123"
+<Link
+  className="list-item"
+  to="/edit/123"
+>
+  <div>
+    <h3
+      className="list-item__title"
     >
       bill 1
-    </Link>
-  </p>
-  <p>
-    Amount: 
+    </h3>
+    <span
+      className="list-item__subtitle"
+    >
+      December-27-1969
+    </span>
+  </div>
+  <h3
+    className="list-item__data"
+  >
     $10.00
-  </p>
-  <p>
-    CreatedAt: 
-    December-27-1969
-  </p>
-</div>
+  </h3>
+</Link>
 `;
