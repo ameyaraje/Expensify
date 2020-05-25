@@ -18,7 +18,10 @@ module.exports = (env) => {
     });
     
     return {
-        entry: './src/app.js',
+        entry: [
+            'babel-polyfill',
+            './src/app.js'
+        ],
         output: {
             // path: '/Users/ameyaraje/Desktop/ReactJS/React-Experiments/indecision-app/public',
             // usage of 'path' makes more sense so the project is portable
